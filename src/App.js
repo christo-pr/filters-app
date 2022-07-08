@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { Filters, ProductsList, Pagination } from './components'
+import useProducts from './hooks/useProducts'
 
 function App() {
+  const { products, onFilter, meta } = useProducts()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto w-full">
+      <Filters onChange={onFilter} />
+      <ProductsList products={products} />
+      <Pagination meta={meta} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
